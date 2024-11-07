@@ -1,0 +1,28 @@
+// Colors
+$primary-color: #1a73e8;
+$secondary-color: #4285f4;
+$text-color: #202124;
+$background-color: #ffffff;
+
+// Breakpoints
+$breakpoints: (
+  "small": 576px,
+  "medium": 768px,
+  "large": 992px,
+  "xlarge": 1200px,
+);
+
+// Typography
+$font-family-base: "Arial", sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.5;
+
+// Spacing
+$spacing-unit: 8px;
+$container-padding: 20px;
+
+// Border radius
+$border-radius: 8px;
+
+// Transitions
+$transition-base: all 0.3s ease;

@@ -1,0 +1,23 @@
+@use "variables" as *;
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin container {
+  width: 100%;
+  padding-right: $container-padding;
+  padding-left: $container-padding;
+  margin-right: auto;
+  margin-left: auto;
+}

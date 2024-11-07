@@ -1,0 +1,10 @@
+@use "sass:math";
+@use "variables" as *;
+
+@function rem($pixels) {
+  @return math.div($pixels, 16px) * 1rem;
+}
+
+@function em($pixels) {
+  @return math.div($pixels, 16px) * 1em;
+}
