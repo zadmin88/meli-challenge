@@ -2,3 +2,8 @@
 @use "abstract/mixins" as *;
 @use "abstract/functions" as *;
 @use "base/reset";
+
+body {
+  font-family: $font-family-base;
+  background-color: $background-color;
+}
