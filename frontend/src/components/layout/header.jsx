@@ -1,7 +1,6 @@
 import "../../styles/components/header.scss";
-
 import logo from "../../assets/logos/Logo_ML@2x.png.png";
-import SearchIcon from "../../assets/buttons/ic_Search@2x.png.png";
+import SearchForm from "../forms/SearchForm";
 
 function Header() {
   return (
@@ -16,16 +15,7 @@ function Header() {
             className={"logoImage"}
           />
         </div>
-        <div className={"searchContainer"}>
-          <input
-            type="text"
-            placeholder="Nunca dejes de buscar"
-            className={"searchInput"}
-          />
-          <button className={"searchButton"}>
-            <img src={SearchIcon} alt="Search icon" className={"searchIcon"} />
-          </button>
-        </div>
+        <SearchForm />
       </div>
     </header>
   );

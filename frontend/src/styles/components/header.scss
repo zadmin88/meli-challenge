@@ -27,48 +27,5 @@
       height: 40px;
       object-fit: contain;
     }
-
-    .searchContainer {
-      flex: 1;
-      display: flex;
-      align-items: center;
-    }
-
-    .searchInput {
-      flex: 1;
-      height: 36px;
-      padding: 0 16px;
-      border: none;
-      border-radius: $border-radius 0 0 $border-radius;
-      font-size: 16px;
-      outline: none;
-
-      &::placeholder {
-        color: $third-text-color;
-      }
-    }
-
-    .searchButton {
-      height: 36px;
-      width: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: $background-color;
-      border: none;
-      border-radius: 0 $border-radius $border-radius 0;
-      cursor: pointer;
-      transition: background-color 0.2s;
-
-      &:hover {
-        background-color: #dddddd;
-      }
-    }
-
-    .searchIcon {
-      width: 20px;
-      height: 20px;
-      background-color: $background-color;
-    }
   }
 }
