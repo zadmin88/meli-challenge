@@ -1,0 +1,12 @@
+@use "../abstract/variables" as *;
+@use "sass:map";
+.items-container {
+  max-width: map.get($breakpoints, xlarge);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 $padding-xs;
+  border-radius: $border-radius;
+}

@@ -1,8 +1,10 @@
 import "../../styles/components/header.scss";
 import logo from "../../assets/logos/Logo_ML@2x.png.png";
 import SearchForm from "../forms/SearchForm";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
   return (
     <header className={"header"}>
       <div className={"container"}>
@@ -13,6 +15,7 @@ function Header() {
             width={40}
             height={40}
             className={"logoImage"}
+            onClick={() => navigate("/")}
           />
         </div>
         <SearchForm />
