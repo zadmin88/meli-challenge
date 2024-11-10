@@ -1,0 +1,138 @@
+@use "../abstract/variables" as *;
+@use "sass:map";
+.item-detail-card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  background-color: white;
+  border-radius: $border-radius;
+  padding: $padding-md;
+
+  .item-details {
+    display: flex;
+    align-items: start;
+
+    .item-image {
+      width: 680px;
+      height: 680px;
+      border-radius: $border-radius;
+      margin-right: $padding-md;
+    }
+
+    .item-info {
+      text-align: start;
+
+      .sales-info {
+        font-size: $font-size-sm;
+        color: $secondary-text-color;
+        margin-bottom: $padding-xs;
+      }
+
+      .item-title {
+        font-size: $font-size-xl;
+        font-weight: bold;
+        padding-bottom: $padding-md;
+      }
+
+      .item-price {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        padding-bottom: $padding-md;
+
+        .item-price-value {
+          font-size: $font-size-3xl;
+        }
+      }
+
+      .item-button {
+        padding: 10px 20px;
+        background-color: $button-color;
+        color: white;
+        border: none;
+        border-radius: $border-radius;
+        cursor: pointer;
+      }
+    }
+  }
+  .item-description {
+    h3 {
+      font-size: $font-size-2xl;
+      font-weight: bold;
+      padding: $padding-md 0;
+    }
+
+    p {
+      max-width: 680px;
+      font-size: $font-size-md;
+      color: $secondary-text-color;
+    }
+  }
+}
+
+@media (max-width: map.get($breakpoints, small)) {
+  .item-detail-card {
+    padding: 8px;
+    .item-details {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 16px;
+
+      .item-image {
+        width: 100%;
+        height: 400px;
+        border-radius: $border-radius;
+      }
+
+      .item-info {
+        text-align: start;
+
+        .sales-info {
+          font-size: $font-size-sm;
+          color: $secondary-text-color;
+          margin-bottom: $padding-xs;
+        }
+
+        .item-title {
+          font-size: $font-size-xl;
+          font-weight: bold;
+          padding-bottom: 8px;
+        }
+
+        .item-price {
+          display: flex;
+          align-items: start;
+          justify-content: start;
+          padding-bottom: $padding-md;
+
+          .item-price-value {
+            font-size: $font-size-3xl;
+          }
+        }
+
+        .item-button {
+          padding: 10px 20px;
+          background-color: $button-color;
+          color: white;
+          border: none;
+          border-radius: $border-radius;
+          cursor: pointer;
+        }
+      }
+    }
+    .item-description {
+      h3 {
+        font-size: $font-size-2xl;
+        font-weight: bold;
+        padding: $padding-md 0;
+      }
+
+      p {
+        max-width: 680px;
+        font-size: $font-size-md;
+        color: $secondary-text-color;
+      }
+    }
+  }
+}

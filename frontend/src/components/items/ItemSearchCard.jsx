@@ -2,10 +2,15 @@ import "../../styles/components/item-search-card.scss";
 import PropTypes from "prop-types";
 import { formatCurrency } from "../../utils/utils";
 import FreeShipping from "../../assets/logos/ic_shipping@2x.png.png";
+import { useNavigate } from "react-router-dom";
 
 function ItemSearchCard({ item }) {
+  const navigate = useNavigate();
   return (
-    <div className="item-card">
+    <div
+      className="item-search-card"
+      onClick={() => navigate(`/items/${item.id}`)}
+    >
       <img src={item.picture} alt={item.title} className="item-image" />
       <div className="item-info">
         <div className="item-details">
