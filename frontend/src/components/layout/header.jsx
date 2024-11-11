@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
+
+  const handleNavigation = () => {
+    navigate("/");
+  };
   return (
     <header className={"header"}>
       <div className={"container"}>
@@ -15,7 +19,7 @@ function Header() {
             width={40}
             height={40}
             className={"logoImage"}
-            onClick={() => navigate("/")}
+            onClick={handleNavigation}
           />
         </div>
         <SearchForm />

@@ -2,6 +2,8 @@ import ItemsCategoriesBar from "../components/items/ItemsCategoriesBar";
 import ItemDetailCard from "../components/items/ItemDetailCard";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import NoItemsCard from "../components/items/NoItemsCard";
+import ItemDetailSkeleton from "../components/skeletons/ItemDetailSkeleton";
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -37,15 +39,15 @@ const ItemDetail = () => {
   if (isLoading) {
     return (
       <div className="items-list-container">
-        <div className="loading">Loading...</div>
+        <ItemDetailSkeleton />
       </div>
     );
   }
 
-  if (error) {
+  if (error || !data) {
     return (
       <div className="items-list-container">
-        <div className="error">Error: {error}</div>
+        <NoItemsCard />
       </div>
     );
   }

@@ -17,12 +17,9 @@
       font-size: $font-size-sm;
       color: $secondary-text-color;
 
-      // .category-text {
-      //   cursor: pointer;
-      //   &:hover {
-      //     color: $third-text-color;
-      //   }
-      // }
+      &:last-child {
+        font-weight: bold;
+      }
 
       .separator {
         margin: 0 8px;

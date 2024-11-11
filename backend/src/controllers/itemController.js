@@ -11,7 +11,7 @@ const getItems = asyncHandler(async (req, res, next) => {
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
-      throw new Error(`API call failed with status: ${response.status}`);
+      return res.status(404).json({ error: "items not found" });
     }
 
     const data = await response.json();
@@ -22,9 +22,7 @@ const getItems = asyncHandler(async (req, res, next) => {
         const sellerResponse = await fetch(sellerUrl);
 
         if (!sellerResponse.ok) {
-          throw new Error(
-            `API call failed with status: ${sellerResponse.status}`
-          );
+          return res.status(404).json({ error: "Seller not found" });
         }
 
         const sellerData = await sellerResponse.json();
@@ -51,16 +49,12 @@ const getItemsById = asyncHandler(async (req, res, next) => {
       fetch(descriptionUrl),
     ]);
 
-    // const itemResponse = await fetch(apiUrl);
-
     if (!itemResponse.ok) {
-      throw new Error(`API call failed with status: ${itemResponse.status}`);
+      return res.status(404).json({ error: "Item not found" });
     }
 
     if (!descriptionResponse.ok) {
-      throw new Error(
-        `API call failed with status: ${descriptionResponse.status}`
-      );
+      return res.status(404).json({ error: "Description not found" });
     }
 
     const itemData = await itemResponse.json();

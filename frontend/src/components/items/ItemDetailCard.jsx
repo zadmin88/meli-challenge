@@ -26,7 +26,7 @@ const ItemDetailCard = ({ item }) => {
       </div>
       <div className="item-description">
         <h3>Descripción del producto</h3>
-        <p>{item.description}</p>
+        <p>{item.description || "Sin descripción"}</p>
       </div>
     </div>
   );

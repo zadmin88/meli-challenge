@@ -3,9 +3,6 @@ import PropTypes from "prop-types";
 import "../../styles/components/items-container.scss";
 
 const ItemsContainer = ({ items }) => {
-  if (items.length === 0) {
-    return <p>No items found</p>;
-  }
   return (
     <div className="items-container">
       {items.map((item) => (

@@ -3,6 +3,8 @@ import ItemsCategoriesBar from "../components/items/ItemsCategoriesBar";
 import "../styles/pages/items-list-page.scss";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import PageSkeleton from "../components/skeletons/PageSkeleton";
+import NoItemsCard from "../components/items/NoItemsCard";
 
 const ItemList = () => {
   const [searchParams] = useSearchParams();
@@ -41,15 +43,15 @@ const ItemList = () => {
   if (isLoading) {
     return (
       <div className="items-list-container">
-        <div className="loading">Loading...</div>
+        <PageSkeleton />
       </div>
     );
   }
 
-  if (error) {
+  if (error || data.items.length === 0) {
     return (
       <div className="items-list-container">
-        <div className="error">Error: {error}</div>
+        <NoItemsCard />
       </div>
     );
   }

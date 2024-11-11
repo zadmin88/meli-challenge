@@ -22,6 +22,8 @@ const SearchForm = () => {
     const searchParam = searchParams.get("search");
     if (searchParam) {
       setSearchText(searchParam);
+    } else {
+      setSearchText("");
     }
   }, [searchParams]);
 

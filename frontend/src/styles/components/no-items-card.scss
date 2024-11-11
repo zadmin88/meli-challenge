@@ -1,0 +1,15 @@
+@use "../abstract/variables" as *;
+
+.no-items-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  border-radius: $border-radius;
+  font-size: $font-size-lg;
+  color: $secondary-text-color;
+  padding: $padding-md;
+  margin-top: 16px;
+}
