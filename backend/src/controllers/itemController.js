@@ -40,18 +40,68 @@ const getItems = asyncHandler(async (req, res, next) => {
 });
 
 const getItemsById = asyncHandler(async (req, res, next) => {
-  console.log("testing GetItemById");
-  //   try {
-  //     const { id } = req.params;
-  //     const item = await ItemService.getItemById(id);
-  //     if (!item) {
-  //       return res.status(404).json({ message: "Item not found" });
-  //     }
-  //     res.json(item);
-  //   } catch (error) {
-  //     next(error);
-  //   }
-  res.status(200);
+  try {
+    const { id } = req.params;
+    const apiUrl = `https://api.mercadolibre.com/items/${id}`;
+    const descriptionUrl = `https://api.mercadolibre.com/items/${id}/description`;
+    const categories = [];
+
+    const [itemResponse, descriptionResponse] = await Promise.all([
+      fetch(apiUrl),
+      fetch(descriptionUrl),
+    ]);
+
+    // const itemResponse = await fetch(apiUrl);
+
+    if (!itemResponse.ok) {
+      throw new Error(`API call failed with status: ${itemResponse.status}`);
+    }
+
+    if (!descriptionResponse.ok) {
+      throw new Error(
+        `API call failed with status: ${descriptionResponse.status}`
+      );
+    }
+
+    const itemData = await itemResponse.json();
+    const categoriesUrl = `https://api.mercadolibre.com/categories/${itemData.category_id}`;
+    const categoriesResponse = await fetch(categoriesUrl);
+    const descriptionData = await descriptionResponse.json();
+
+    if (categoriesResponse.ok) {
+      const categoriesData = await categoriesResponse.json();
+
+      categoriesData?.path_from_root.map((category) =>
+        categories.push(category.name)
+      );
+    }
+
+    const result = {
+      author: {
+        name: "Simon",
+        lastname: "Franco",
+      },
+      item: {
+        id: itemData.id,
+        title: itemData.title,
+        price: {
+          currency: itemData.currency_id,
+          amount: itemData.price,
+          decimals: 2,
+        },
+        picture: itemData.pictures[0].url,
+        condition: itemData.condition,
+        free_shipping: itemData.shipping.free_shipping,
+        sold_quantity: itemData.initial_quantity,
+        description: descriptionData.plain_text,
+      },
+      categories: categories,
+    };
+
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = { getItems, getItemsById };

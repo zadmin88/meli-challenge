@@ -10,7 +10,8 @@ const ItemDetailCard = ({ item }) => {
         <div className="item-info">
           <div>
             <p className="sales-info">
-              {item.condition} - {item.sold_quantity} vendidos
+              {item.condition === "new" ? "Nuevo" : "Usado"} -{" "}
+              {item.sold_quantity} vendidos
             </p>
           </div>
           <h2 className="item-title">{item.title}</h2>
@@ -19,7 +20,6 @@ const ItemDetailCard = ({ item }) => {
             <span className="item-price-value">
               {formatCurrency(item.price.amount, item.price.currency)}
             </span>
-            {/* <span>{item.price.decimals}</span> */}
           </div>
           <button className="item-button">Comprar</button>
         </div>

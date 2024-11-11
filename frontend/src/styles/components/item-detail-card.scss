@@ -17,6 +17,7 @@
       height: 680px;
       border-radius: $border-radius;
       margin-right: $padding-md;
+      object-fit: contain;
     }
 
     .item-info {
@@ -47,6 +48,7 @@
 
       .item-button {
         padding: 10px 20px;
+        width: 100%;
         background-color: $button-color;
         color: white;
         border: none;
