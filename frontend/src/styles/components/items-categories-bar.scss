@@ -17,12 +17,12 @@
       font-size: $font-size-sm;
       color: $secondary-text-color;
 
-      .category-text {
-        cursor: pointer;
-        &:hover {
-          color: $third-text-color;
-        }
-      }
+      // .category-text {
+      //   cursor: pointer;
+      //   &:hover {
+      //     color: $third-text-color;
+      //   }
+      // }
 
       .separator {
         margin: 0 8px;

@@ -1,19 +1,15 @@
 const transformResponse = (data) => {
-  // Create author object (you might want to replace these with actual values)
   const author = {
     name: "Simon",
     lastname: "Franco",
   };
 
-  // Extract categories from available_filters
   const categories =
-    data.available_filters
-      .find((filter) => filter.id === "category")
-      ?.values.map((value) => value.name) || [];
+    data.filters
+      ?.find((filter) => filter.id === "category")
+      ?.values[0]?.path_from_root?.map((category) => category.name) || [];
 
-  // Transform items
   const items = data.results.map((item) => {
-    // Extract price decimals (getting decimal part from price)
     const priceString = item.price.toString();
     const [integerPart, decimalPart = "0"] = priceString.split(".");
 
@@ -28,6 +24,7 @@ const transformResponse = (data) => {
       picture: item.thumbnail,
       condition: item.condition,
       free_shipping: item.shipping?.free_shipping || false,
+      city: item.city,
     };
   });
 

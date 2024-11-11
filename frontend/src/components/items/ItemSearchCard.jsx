@@ -27,7 +27,7 @@ function ItemSearchCard({ item }) {
               )}
             </span>
           </h2>
-          <span className="item-city">{"argentina"}</span>
+          <span className="item-city">{item.city}</span>
         </div>
         <p className="item-title">{item.title}</p>
       </div>

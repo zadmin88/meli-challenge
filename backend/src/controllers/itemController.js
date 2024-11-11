@@ -6,7 +6,7 @@ const getItems = asyncHandler(async (req, res, next) => {
   try {
     const { search } = req.query;
 
-    const apiUrl = `https://api.mercadolibre.com/sites/MLA/search?q=${"apple ipod"}&limit=4`;
+    const apiUrl = `https://api.mercadolibre.com/sites/MLA/search?q=${search}&limit=4`;
 
     const response = await fetch(apiUrl);
 
@@ -15,9 +15,24 @@ const getItems = asyncHandler(async (req, res, next) => {
     }
 
     const data = await response.json();
-    const transformedData = transformResponse(data);
 
-    res.json(transformedData);
+    const transformedData = await Promise.all(
+      data.results.map(async (item) => {
+        const sellerUrl = `https://api.mercadolibre.com/users/${item.seller.id}`;
+        const sellerResponse = await fetch(sellerUrl);
+
+        if (!sellerResponse.ok) {
+          throw new Error(
+            `API call failed with status: ${sellerResponse.status}`
+          );
+        }
+
+        const sellerData = await sellerResponse.json();
+        return { ...item, city: sellerData.address.city };
+      })
+    );
+
+    res.json(transformResponse({ ...data, results: transformedData }));
   } catch (error) {
     console.error(error);
     next(error);
