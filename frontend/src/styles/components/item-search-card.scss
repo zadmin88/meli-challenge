@@ -13,6 +13,7 @@
     height: 180px;
     border-radius: $border-radius;
     margin-right: $padding-xs;
+    object-fit: contain;
   }
   .item-info {
     text-align: start;

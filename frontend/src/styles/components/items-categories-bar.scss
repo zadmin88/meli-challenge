@@ -16,6 +16,11 @@
       align-items: center;
       font-size: $font-size-sm;
       color: $secondary-text-color;
+      cursor: pointer;
+
+      &:hover {
+        color: $third-text-color;
+      }
 
       &:last-child {
         font-weight: bold;
@@ -26,6 +31,14 @@
         color: $secondary-text-color;
 
         padding: 0;
+      }
+
+      .no-category-text {
+        cursor: default;
+
+        &:hover {
+          color: $secondary-text-color;
+        }
       }
     }
   }

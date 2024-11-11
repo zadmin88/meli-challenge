@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import PageSkeleton from "../components/skeletons/PageSkeleton";
 import NoItemsCard from "../components/items/NoItemsCard";
+import { Helmet } from "react-helmet-async";
 
 const ItemList = () => {
   const [searchParams] = useSearchParams();
@@ -57,6 +58,21 @@ const ItemList = () => {
   }
   return (
     <div className="items-list-container">
+      <Helmet>
+        <title>
+          {(searchParams.get("search") &&
+            ` ${searchParams.get("search")} Mercado Libre`) ||
+            "Meli Challenge"}
+        </title>
+        <meta
+          name="description"
+          content={
+            searchParams.get("search")
+              ? `Resultados de búsqueda para ${searchParams.get("search")}`
+              : "Meli Challenge"
+          }
+        />
+      </Helmet>
       <ItemsCategoriesBar categories={data.categories} />
       <ItemsContainer items={data.items} />
     </div>

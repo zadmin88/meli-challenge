@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NoItemsCard from "../components/items/NoItemsCard";
 import ItemDetailSkeleton from "../components/skeletons/ItemDetailSkeleton";
+import { Helmet } from "react-helmet-async";
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -54,6 +55,10 @@ const ItemDetail = () => {
 
   return (
     <div className="items-list-container">
+      <Helmet>
+        <title>{`${data.item.title} - Mercado Libre`}</title>
+        <meta name="description" content={`${data.item.title}`} />
+      </Helmet>
       <ItemsCategoriesBar categories={data.categories} />
       <ItemDetailCard item={data.item} />
     </div>
