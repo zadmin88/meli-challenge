@@ -1,0 +1,27 @@
+@use "../abstract/variables" as *;
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: $padding-md;
+  margin-top: 16px;
+  border-radius: $border-radius;
+
+  p {
+    font-size: $font-size-lg;
+    color: $secondary-text-color;
+  }
+
+  button {
+    background-color: $button-color;
+    color: white;
+    padding: $padding-xs;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+  }
+}
