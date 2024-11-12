@@ -15,8 +15,10 @@ Prueba Frontend Mercadolibre
 
 ## Instrucciones
 
-- ejecutar `npm install` en la raiz del proyecto y instalara las dependencias del backend como las de la carpeta frontend
+- Ejecutar `npm install` en la raiz del proyecto y instalara las dependencias del backend como las de la carpeta frontend
 - Ejecutar `npm run dev` en la raiz del proyecto , ejecutara tanto el servidor the backend con nodejs y express y el front con react por medio de concurrently.
+- Puerto para FrontEnd 5173
+- Puerto Para Backend 7000
 
 ## Stack utilizado
 
