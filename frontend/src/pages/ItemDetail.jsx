@@ -54,8 +54,8 @@ const ItemDetail = () => {
   }
 
   return (
-    <div className="items-list-container">
-      <Helmet>
+    <div className="items-list-container" data-testid="item-detail-container">
+      <Helmet data-testid="item-detail-helmet">
         <title>{`${data.item.title} - Mercado Libre`}</title>
         <meta name="description" content={`${data.item.title}`} />
       </Helmet>

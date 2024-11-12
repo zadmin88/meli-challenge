@@ -8,13 +8,18 @@ function ItemSearchCard({ item }) {
   const navigate = useNavigate();
   return (
     <div
-      className="item-search-card"
+      className="item-search-card "
       onClick={() => navigate(`/items/${item.id}`)}
     >
-      <img src={item.picture} alt={item.title} className="item-image" />
+      <img
+        src={item.picture}
+        alt={item.title}
+        className="item-image"
+        data-testid="test-image"
+      />
       <div className="item-info">
         <div className="item-details">
-          <h2 className="item-price">
+          <h2 className="item-price" data-testid="item-price">
             {formatCurrency(item.price.amount, item.price.currency)}
             <span>
               {item.free_shipping && (
@@ -23,13 +28,18 @@ function ItemSearchCard({ item }) {
                   alt="Envio Gratis"
                   width={20}
                   height={20}
+                  data-testid="item-free-shipping"
                 ></img>
               )}
             </span>
           </h2>
-          <span className="item-city">{item.city}</span>
+          <span className="item-city" data-testid="item-city">
+            {item.city}
+          </span>
         </div>
-        <p className="item-title">{item.title}</p>
+        <p className="item-title" data-testid="item-title">
+          {item.title}
+        </p>
       </div>
     </div>
   );

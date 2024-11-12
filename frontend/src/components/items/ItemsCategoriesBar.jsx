@@ -18,7 +18,7 @@ const ItemsCategoriesBar = ({ categories }) => {
     );
   }
   return (
-    <nav className="categories-nav">
+    <nav className="categories-nav" data-testid="categories-nav">
       <ul className="categories-list">
         {categories.map((category, index) => (
           <li key={category} className="category-item">

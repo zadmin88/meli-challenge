@@ -58,7 +58,7 @@ const ItemList = () => {
   }
   return (
     <div className="items-list-container">
-      <Helmet>
+      <Helmet data-testid="helmet">
         <title>
           {(searchParams.get("search") &&
             ` ${searchParams.get("search")} Mercado Libre`) ||

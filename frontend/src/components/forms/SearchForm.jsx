@@ -11,6 +11,7 @@ const SearchForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!searchText) {
       searchInputRef.current?.focus();
       return;
@@ -28,17 +29,22 @@ const SearchForm = () => {
   }, [searchParams]);
 
   return (
-    <form onSubmit={handleSubmit} className="searchContainer">
+    <form onSubmit={handleSubmit} className="search-container">
       <input
         type="text"
         placeholder="Nunca dejes de buscar"
-        className="searchInput"
+        className="search-input"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
         ref={searchInputRef}
+        data-testid="search-input"
       />
-      <button type="submit" className="searchButton">
-        <img src={SearchIcon} alt="Search icon" className="searchIcon" />
+      <button
+        type="submit"
+        className="search-button"
+        data-testid="search-button"
+      >
+        <img src={SearchIcon} alt="Search icon" className="search-icon" />
       </button>
     </form>
   );

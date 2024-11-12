@@ -4,7 +4,7 @@ import "../../styles/components/items-container.scss";
 
 const ItemsContainer = ({ items }) => {
   return (
-    <div className="items-container">
+    <div className="items-container" data-testid="items-list-container">
       {items.map((item) => (
         <ItemSearchCard key={item.id} item={item} />
       ))}

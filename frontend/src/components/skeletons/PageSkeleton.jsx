@@ -2,7 +2,7 @@ import "../../styles/components/page-skeleton.scss";
 
 const PageSkeleton = () => {
   return (
-    <div className="skeleton-loader">
+    <div className="skeleton-loader" data-testid="page-skeleton">
       <div className="categories-skeleton"></div>
       <div className="item-skeleton">
         <div className="image-skeleton"></div>

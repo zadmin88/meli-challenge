@@ -16,5 +16,6 @@ export default defineConfig({
   },
   build: {
     sourcemap: true,
+    brotliSize: true, // Enable Brotli compression
   },
 });
