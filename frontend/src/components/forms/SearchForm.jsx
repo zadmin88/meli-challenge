@@ -9,13 +9,14 @@ const SearchForm = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!searchText) {
       searchInputRef.current?.focus();
       return;
     }
+
     navigate(`/items?search=${searchText}`);
   };
 

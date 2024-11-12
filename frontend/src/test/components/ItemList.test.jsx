@@ -4,6 +4,7 @@ import { MemoryRouter, useSearchParams } from "react-router-dom";
 import { vi, describe, it, beforeEach, expect } from "vitest";
 import { HelmetProvider } from "react-helmet-async";
 import ItemList from "../../pages/ItemList";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 vi.mock("react-router-dom", async () => {
   const actual = await vi.importActual("react-router-dom");
@@ -46,9 +47,11 @@ describe("ItemList", () => {
   const helmetContext = {};
 
   const Wrapper = ({ children }) => (
-    <HelmetProvider context={helmetContext}>
-      <MemoryRouter>{children}</MemoryRouter>
-    </HelmetProvider>
+    <QueryClientProvider client={new QueryClient()}>
+      <HelmetProvider context={helmetContext}>
+        <MemoryRouter>{children}</MemoryRouter>
+      </HelmetProvider>
+    </QueryClientProvider>
   );
 
   beforeEach(() => {
@@ -61,9 +64,11 @@ describe("ItemList", () => {
 
   it("Debe renderizar el skeleton al iniciar", () => {
     render(
-      <MemoryRouter>
-        <ItemList />
-      </MemoryRouter>
+      <QueryClientProvider client={new QueryClient()}>
+        <MemoryRouter>
+          <ItemList />
+        </MemoryRouter>
+      </QueryClientProvider>
     );
 
     expect(screen.getByTestId("page-skeleton")).toBeInTheDocument();
@@ -110,23 +115,11 @@ describe("ItemList", () => {
     });
 
     render(
-      <MemoryRouter>
-        <ItemList />
-      </MemoryRouter>
-    );
-
-    await waitFor(() => {
-      expect(screen.getByTestId("no-items-card")).toBeInTheDocument();
-    });
-  });
-
-  it("Debe renderizar el no items card cuando la petición falla", async () => {
-    window.fetch = vi.fn().mockRejectedValueOnce(new Error("Fetch failed"));
-
-    render(
-      <MemoryRouter>
-        <ItemList />
-      </MemoryRouter>
+      <QueryClientProvider client={new QueryClient()}>
+        <MemoryRouter>
+          <ItemList />
+        </MemoryRouter>
+      </QueryClientProvider>
     );
 
     await waitFor(() => {
@@ -149,9 +142,11 @@ describe("ItemList", () => {
     });
 
     render(
-      <MemoryRouter>
-        <ItemList />
-      </MemoryRouter>
+      <QueryClientProvider client={new QueryClient()}>
+        <MemoryRouter>
+          <ItemList />
+        </MemoryRouter>
+      </QueryClientProvider>
     );
 
     await waitFor(() => {

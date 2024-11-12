@@ -1,41 +1,19 @@
 import ItemsCategoriesBar from "../components/items/ItemsCategoriesBar";
 import ItemDetailCard from "../components/items/ItemDetailCard";
-import { useState, useEffect } from "react";
+
 import { useParams } from "react-router-dom";
 import NoItemsCard from "../components/items/NoItemsCard";
 import ItemDetailSkeleton from "../components/skeletons/ItemDetailSkeleton";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "@tanstack/react-query";
+import { getItemById } from "../services/getItemById";
 
 const ItemDetail = () => {
   const { id } = useParams();
-  const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-
-        const response = await fetch(`http://localhost:3000/api/items/${id}`);
-
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
-
-        const responseData = await response.json();
-
-        setData(responseData);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchItems();
-  }, [id]);
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["item", id],
+    queryFn: () => getItemById(id),
+  });
 
   if (isLoading) {
     return (
