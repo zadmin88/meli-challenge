@@ -24,8 +24,8 @@ app.get("/", (req, res) => {
 // Routes
 app.use("/api/items", require("./src/routes/itemRoutes"));
 
-const server = app.listen(3000, () =>
-  console.log(`Server started on port ${3000}`)
+const server = app.listen(7000, () =>
+  console.log(`Server started on port ${7000}`)
 );
 
 // Error handling
